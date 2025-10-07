@@ -7,7 +7,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Register = () => {
   
   return (
-    <> Hello Groups</>
+    <> 
+    Hellow Meron
+    </>
   );
 };
 
