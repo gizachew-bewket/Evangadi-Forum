@@ -24,7 +24,7 @@ const AnswerPage = () => {
 
         const aRes = await axiosInstance.get(`/answer/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
-        });
+        });//Check the expiration of the token
         setAnswers(Array.isArray(aRes.data.data) ? aRes.data.data : []);
       } catch (err) {
         console.error("Error fetching data:", err);
