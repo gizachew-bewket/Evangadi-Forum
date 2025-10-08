@@ -10,17 +10,37 @@ const Home = () => {
 
   const [questions, setQuestions] = useState([]);
   const [search, setSearch] = useState("");
-  const [visibleCount, setVisibleCount] = useState(5); // 👈 initially show 5
+  const [visibleCount, setVisibleCount] = useState(5);
 
   useEffect(() => {
-    if (!user?.username) {
-      const savedUsername = localStorage.getItem("username");
-      const savedUserid = localStorage.getItem("userid");
-      if (savedUsername) {
-        setUser({ username: savedUsername, userid: savedUserid });
+    const verifyUser = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const savedUsername = localStorage.getItem("username");
+        const savedUserid = localStorage.getItem("userid");
+
+        // no username or token? redirect
+        if (!token || !savedUsername) {
+          navigate("/login");
+          return;
+        }
+
+        // set user in context if missing
+        if (!user?.username) {
+          setUser({ username: savedUsername, userid: savedUserid });
+        }
+
+        await axiosInstance.get("/user/checkUser", {
+          headers: { Authorization: "Bearer " + token },
+        });
+      } catch (err) {
+        console.error("Token check failed:", err.response?.data || err.message);
+        navigate("/login");
       }
-    }
-  }, [user, setUser]);
+    };
+
+    verifyUser();
+  }, [user, setUser, navigate]);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -47,7 +67,7 @@ const Home = () => {
     q.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  // 👇 Only take the visible part
+  //  Only take the visible part
   const visibleQuestions = filteredQuestions.slice(0, visibleCount);
 
   return (
@@ -83,15 +103,24 @@ const Home = () => {
               <div className="avatar">👤</div>
               <div>
                 <div className="question-text">{q.title}</div>
-                <div className="author">{q.username}</div>
+                <div className="author">
+                  {q.username} &nbsp;•&nbsp;{" "}
+                  <span className="date">
+                    {new Date(q.created_at).toLocaleString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </span>
+                </div>
               </div>
             </div>
             <div className="arrow">➡</div>
           </div>
         ))}
       </div>
-
-      {/* 👇 Load more button */}
       {visibleCount < filteredQuestions.length && (
         <div className="see-more-container">
           <button

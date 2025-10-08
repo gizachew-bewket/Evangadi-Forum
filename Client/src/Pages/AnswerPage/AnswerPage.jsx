@@ -1,16 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../axiosconfig";
 import "./AnswerPage.css";
 import { FaUserCircle } from "react-icons/fa";
+import { Appstate } from "../Appstate";
 
 const AnswerPage = () => {
   const { id } = useParams();
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [newAnswer, setNewAnswer] = useState("");
-  const [message, setMessage] = useState(""); // ✅ for success message
-  const [error, setError] = useState(""); // optional error handling
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(Appstate);
+  useEffect(() => {
+    const verifyUser = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          navigate("/login");
+          return;
+        }
+
+        const res = await axiosInstance.get("/user/checkUser", {
+          headers: { Authorization: "Bearer " + token },
+        });
+
+        setUser({
+          username: res.data.username,
+          userid: res.data.userid,
+        });
+      } catch (err) {
+        console.error("User not authenticated:", err);
+        navigate("/login");
+      }
+    };
+
+    verifyUser();
+  }, [user, navigate, setUser]);
 
   // Fetch question + answers
   useEffect(() => {
@@ -24,7 +52,7 @@ const AnswerPage = () => {
 
         const aRes = await axiosInstance.get(`/answer/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
-        });//Check the expiration of the token
+        });
         setAnswers(Array.isArray(aRes.data.data) ? aRes.data.data : []);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -48,14 +76,14 @@ const AnswerPage = () => {
 
       setAnswers([res.data.data, ...answers]);
       setNewAnswer("");
-      setMessage("✅ Answer posted successfully!");
+      setMessage(" Answer posted successfully!");
       setError("");
 
       // clear success message after 3 sec
       setTimeout(() => setMessage(""), 3000);
     } catch (err) {
       console.error("Error posting answer:", err);
-      setError("❌ Failed to post answer");
+      setError(" Failed to post answer");
     }
   };
 
@@ -69,7 +97,9 @@ const AnswerPage = () => {
         </div>
       )}
 
-      <h3 className="answers-header">Answer From The Community</h3>
+      <h3 className="answers-header">
+        Answer From The Community({answers.length})
+      </h3>
 
       {/* Success/Error messages */}
       {message && (
@@ -100,10 +130,10 @@ const AnswerPage = () => {
           onChange={(e) => setNewAnswer(e.target.value)}
         />
         <button onClick={handlePostAnswer}>Post Answer</button>
+        {/* {message && <p className="msg">{message}</p>} */}
       </div>
     </div>
   );
 };
 
-g
 export default AnswerPage;
