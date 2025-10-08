@@ -65,6 +65,7 @@ Database
 Axios
 .ENV
 
+all components and server side apps are inserted in to a new folder called server
 
 
 
