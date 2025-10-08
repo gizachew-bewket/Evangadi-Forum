@@ -1,10 +1,3 @@
-// import { useState, useContext } from "react";
-// import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import { Link, useNavigate } from "react-router-dom";
-// import axiosInstance from "../../axiosconfig";
-// import "./Login.css";
-// import { Appstate } from "../Appstate"; // ✅ import context
-
 import React, { useState, useContext } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,7 +12,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false); // ✨ NEW!
+  const [rememberMe, setRememberMe] = useState(false); //  NEW!
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
@@ -45,7 +38,7 @@ const Login = () => {
       const response = await axiosInstance.post("/user/login", {
         email,
         user_password: password,
-        rememberMe: rememberMe, // ✨ Send to backend!
+        rememberMe: rememberMe, //  Send to backend!
       });
 
       const { token, message, username, userid } = response.data;
@@ -103,7 +96,7 @@ const Login = () => {
           </span>
         </div>
 
-        {/* ✨ NEW: Remember Me Checkbox! */}
+        {/*  NEW: Remember Me Checkbox! */}
         <div className="remember-forgot">
           <div className="remember-me">
             <input

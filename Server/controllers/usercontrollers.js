@@ -105,7 +105,7 @@ async function login(req, res) {
       msg: "user login successful",
       token,
       username,
-      userid, // ✨ OPTIONAL: Make sure you return userid too
+      userid, //  OPTIONAL: Make sure you return userid too
     });
   } catch (error) {
     console.error("Error logging in:", error);
