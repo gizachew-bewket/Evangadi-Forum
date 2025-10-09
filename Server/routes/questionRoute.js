@@ -5,18 +5,13 @@ const authmiddleware = require("../middleware/authmiddleware");
 
 // question controller
 const {
-  get_all_questions,
-  get_single_question,
-  post_question,
+  // Add your question controller functions here
+  // For example: get_questions, post_question, etc.
 } = require("../controllers/questioncontrollers");
 
-// get all questions
-router.get("/", authmiddleware, get_all_questions);
-
-// get single question
-router.get("/:questionid", authmiddleware, get_single_question);
-
-// post a question
-router.post("", authmiddleware, post_question);
+// Define your question routes here
+// For example:
+// router.get("/", authmiddleware, get_questions);
+// router.post("/", authmiddleware, post_question);
 
 module.exports = router;
