@@ -34,7 +34,7 @@ const Header = () => {
 
       <nav className="nav">
         <a href="/home">Home</a>
-        <a href="#">How it works</a>
+        <Link to="/About">How it works</Link>
 
         {!user?.username ? (
           <button className="signin-btn" onClick={() => navigate("/login")}>

@@ -2,66 +2,6 @@
 const dbconnection = require("../Database/databaseconfig");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-async function register(req, res) {
-  const { username, firstname, lastname, email, user_password } = req.body;
-  if (!username) {
-    return res.status(400).json({ message: "Please Enter Your User Name" });
-  }
-  if (!firstname) {
-    return res.status(400).json({ message: "Please Enter Your firstname" });
-  }
-  if (!lastname) {
-    return res.status(400).json({ message: "Please Enter Your lastname" });
-  }
-  if (!email) {
-    return res.status(400).json({ message: "Please Enter Your email" });
-  }
-  if (!user_password) {
-    return res.status(400).json({ message: "Please Enter Your password" });
-  }
-
-  try {
-    const [usernameValidation] = await dbconnection.query(
-      "SELECT * FROM users WHERE username= ?",
-      [username]
-    );
-
-    const [emailValidation] = await dbconnection.query(
-      "SELECT * FROM users WHERE email=?",
-      [email]
-    );
-
-    if (usernameValidation.length > 0) {
-      return res
-        .status(400)
-        .json({ status: "Failed ", message: "Username Already Exists" });
-    }
-
-    if (emailValidation.length > 0) {
-      return res
-        .status(400)
-        .json({ status: "Failed ", message: "Email Already in Use" });
-    }
-
-    if (user_password.length <= 8) {
-      return res
-        .status(400)
-        .json({ message: "Password must be at least 8 characters" });
-    }
-    // Hash the password
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(user_password, saltRounds);
-
-    await dbconnection.query(
-      "INSERT INTO users (username, firstname, lastname, email, user_password) VALUES (?, ?, ?, ?, ?)",
-      [username, firstname, lastname, email, hashedPassword]
-    );
-    res.status(201).json({ message: "User registered successfully" });
-  } catch (error) {
-    console.error("Error registering user:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-}
 async function login(req, res) {
   const { email, user_password, rememberMe } = req.body;
 
