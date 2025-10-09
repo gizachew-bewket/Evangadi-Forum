@@ -2,6 +2,59 @@
 const dbconnection = require("../Database/databaseconfig");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+
+async function register(req, res) {
+  const { username, firstname, lastname, email, user_password } = req.body;
+
+  // Validation
+  if (!username || !firstname || !lastname || !email || !user_password) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  if (!/\S+@\S+\.\S+/.test(email)) {
+    return res.status(400).json({ message: "Please enter a valid email address" });
+  }
+
+  if (user_password.length < 6) {
+    return res.status(400).json({ message: "Password must be at least 6 characters long" });
+  }
+
+  try {
+    // Check if user already exists
+    const [existingUser] = await dbconnection.query(
+      "SELECT * FROM users WHERE email = ? OR username = ?",
+      [email, username]
+    );
+
+    if (existingUser.length > 0) {
+      return res.status(400).json({ message: "User already exists with this email or username" });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(user_password, 10);
+
+    // Insert new user
+    const [result] = await dbconnection.query(
+      "INSERT INTO users (username, firstname, lastname, email, user_password) VALUES (?, ?, ?, ?, ?)",
+      [username, firstname, lastname, email, hashedPassword]
+    );
+
+    res.status(201).json({
+      message: "User registered successfully",
+      userid: result.insertId,
+      username: username
+    });
+
+  } catch (error) {
+    console.error("Error registering user:", error);
+    console.error("Error details:", error.message);
+    res.status(500).json({ 
+      message: "Internal server error", 
+      error: error.message 
+    });
+  }
+}
+
 async function login(req, res) {
   const { email, user_password, rememberMe } = req.body;
 
