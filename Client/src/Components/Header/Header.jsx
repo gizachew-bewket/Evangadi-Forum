@@ -33,7 +33,7 @@ const Header = () => {
       </div>
 
       <nav className="nav">
-        <a href="/home">Home</a>
+        <Link to="/home">Home</Link>
         <Link to="/About">How it works</Link>
 
         {!user?.username ? (
