@@ -49,7 +49,7 @@ function App() {
   return (
     <Appstate.Provider value={{ user, setUser }}>
       <Header />
-      <div className="app-container" style={{ display: "flex", gap: "20px" }}>
+      <div className="app-container" style={{ display: "flex", gap: "0px" }}>
         <div className="form-container" style={{ flex: 2 }}>
           <Routes>
             <Route path="/" element={<Register />} />
