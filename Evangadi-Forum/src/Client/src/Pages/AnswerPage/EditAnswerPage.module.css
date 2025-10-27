@@ -1,0 +1,104 @@
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Title */
+.title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Textarea */
+.textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+/* Update Button */
+.updateBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.updateBtn:hover {
+    background-color: #005fcc;
+}
+
+/* Loading & Error Messages */
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ===== Responsive Styles ===== */
+
+/* Tablets */
+@media (max-width: 900px) {
+    .container {
+        padding: 15px;
+        margin: 30px auto;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .textarea {
+        font-size: 0.95rem;
+    }
+
+    .updateBtn {
+        font-size: 0.95rem;
+        padding: 8px 18px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px 10px;
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .textarea {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .updateBtn {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+}

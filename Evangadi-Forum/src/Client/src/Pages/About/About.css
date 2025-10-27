@@ -1,0 +1,292 @@
+.about-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    /* padding: 1rem; */
+    /* background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    height: 510px; */
+}
+
+.about-title {
+    color: #ff7a00;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.about-heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #4a148c;
+    margin-bottom: 1rem;
+}
+
+.about-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.about-btn {
+    background: #ff7a00;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.about-btn:hover {
+    background: #e56a00;
+}
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* Base Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Header */
+.header {
+  background-color: #ffffff;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.header .logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #536dfe;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.header .logo span {
+  background-color: transparent;
+  width: 120px;
+  height: 30px;
+  display: inline-block;
+  line-height: 30px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 900;
+  color: #536dfe;
+}
+
+/* Navigation */
+.header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header nav ul li {
+  margin-left: 20px;
+}
+
+.header nav ul li a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.header nav ul li a:hover {
+  color: #536dfe;
+}
+
+/* Signin Button */
+.signin-btn {
+  background-color: #536dfe;
+  color: white !important;
+  padding: 8px 18px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.signin-btn:hover {
+  background-color: #3f51b5;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Description Card */
+.description-card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+.description-card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.description-card p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Steps Section */
+.how-it-works-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.step-card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(83, 109, 254, 0.15);
+}
+
+.step-number {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #536dfe;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.step-card h4 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 15px;
+  color: #666;
+}
+
+/* Back to Home Button */
+.back-to-home-btn-container {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.back-to-home-btn {
+  background-color: transparent;
+  color: #536dfe;
+  border: 2px solid #536dfe;
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.back-to-home-btn:hover {
+  background-color: #536dfe;
+  color: white;
+  box-shadow: 0 4px 10px rgba(83, 109, 254, 0.3);
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #f8f9fa;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .header nav ul {
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .header nav ul li {
+    margin: 5px 10px;
+  }
+
+  .signin-btn {
+    margin-top: 10px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .description-card,
+  .step-card {
+    padding: 25px;
+  }
+
+  .step-card h4 {
+    font-size: 20px;
+  }
+}
+

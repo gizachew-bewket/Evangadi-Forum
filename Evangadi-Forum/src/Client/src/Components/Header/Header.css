@@ -1,0 +1,128 @@
+/* Header Container */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background: #3B455A;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Left side: Logo + Hamburger */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Logo Styling */
+.header .logo span {
+    width: 65px !important;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo-orange {
+    color: orange !important;
+}
+
+.logo-black {
+    color: black !important;
+}
+
+/* Hamburger Menu */
+.menu-icon {
+    display: none; /* hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+}
+
+/* Navigation Menu */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: 500;
+    color: black;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 5px black;
+    font-weight: bold;
+}
+
+/* Signin Button */
+.signin-btn {
+    background: #4f6ef7;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.signin-btn:hover {
+    background: #3a55d1;
+}
+
+/* ------------------ Responsive Styles ------------------ */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 12px 20px;
+    }
+
+    /* Show Hamburger */
+    .menu-icon {
+        display: flex;
+    }
+
+    /* Hide nav by default on mobile */
+    .nav {
+        position: absolute;
+        top: 60px; /* adjust according to header height */
+        right: 0;
+        background: #3B455A;
+        flex-direction: column;
+        width: 200px;
+        gap: 0;
+        display: none; /* hidden initially */
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        overflow: hidden;
+    }
+
+    /* Nav links on mobile */
+    .nav a, .signin-btn {
+        padding: 12px 20px;
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav.show {
+        display: flex; /* show nav when toggled */
+    }
+}
