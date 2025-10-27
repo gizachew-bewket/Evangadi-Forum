@@ -1,0 +1,108 @@
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.input,
+.textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.textarea {
+    resize: vertical;
+}
+
+.updateBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.updateBtn:hover {
+    background-color: #005fcc;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ===========================
+   RESPONSIVE MEDIA QUERIES
+=========================== */
+@media (max-width: 768px) {
+    .container {
+        margin: 30px 15px;
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .input,
+    .textarea {
+        font-size: 0.95rem;
+        padding: 8px;
+    }
+
+    .updateBtn {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 20px 10px;
+        padding: 12px;
+    }
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .input,
+    .textarea {
+        font-size: 0.9rem;
+        padding: 7px;
+    }
+
+    .updateBtn {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
